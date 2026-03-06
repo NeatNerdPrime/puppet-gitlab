@@ -16,21 +16,21 @@ describe 'gitlab::system_hook' do
     let(:params) do
       {
         system_hooks_dir: '/custom/hooks/dir',
-        source: source
+        source: source,
       }
     end
 
     it { is_expected.to compile.with_all_deps }
 
     it do
-      is_expected.to contain_file('/custom/hooks/dir').
-        with_ensure('directory')
+      is_expected.to contain_file('/custom/hooks/dir')
+        .with_ensure('directory')
     end
 
     it do
-      is_expected.to contain_file("/custom/hooks/dir/#{title}").
-        with_ensure('file').
-        with_source(source)
+      is_expected.to contain_file("/custom/hooks/dir/#{title}")
+        .with_ensure('file')
+        .with_source(source)
     end
   end
 
@@ -39,21 +39,21 @@ describe 'gitlab::system_hook' do
     let(:params) do
       {
         system_hooks_dir: '/custom/hooks/dir',
-        content: content
+        content: content,
       }
     end
 
     it { is_expected.to compile.with_all_deps }
 
     it do
-      is_expected.to contain_file('/custom/hooks/dir').
-        with_ensure('directory')
+      is_expected.to contain_file('/custom/hooks/dir')
+        .with_ensure('directory')
     end
 
     it do
-      is_expected.to contain_file("/custom/hooks/dir/#{title}").
-        with_ensure('file').
-        with_content(content)
+      is_expected.to contain_file("/custom/hooks/dir/#{title}")
+        .with_ensure('file')
+        .with_content(content)
     end
   end
 end
